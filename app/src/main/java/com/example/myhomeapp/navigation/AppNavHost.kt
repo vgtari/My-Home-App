@@ -5,14 +5,17 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.myhomeapp.ui.theme.pages.Houses.RoomsScreen
-import com.example.myhomeapp.ui.theme.pages.Products.BedsitterScreen
-import com.example.myhomeapp.ui.theme.pages.Products.OneBedroomScreen
-import com.example.myhomeapp.ui.theme.pages.Products.PenthouseScreen
-import com.example.myhomeapp.ui.theme.pages.Products.ThreeBedroomScreen
-import com.example.myhomeapp.ui.theme.pages.Products.TwoBedroomScreen
+import com.example.myhomeapp.ui.theme.pages.OneBedroom.AddOneBedroomScreen
 
+import com.example.myhomeapp.ui.theme.pages.OneBedroom.ViewOneBedroomScreen
+import com.example.myhomeapp.ui.theme.pages.Penthouse.AddPenthouseScreen
+import com.example.myhomeapp.ui.theme.pages.Penthouse.ViewPenthouseScreen
+import com.example.myhomeapp.ui.theme.pages.ThreeBedroom.AddThreeBedroomScreen import com.example.myhomeapp.ui.theme.pages.ThreeBedroom.ViewThreeBedroomScreen
+import com.example.myhomeapp.ui.theme.pages.TwoBedroom.AddTwoBedroomScreen
+import com.example.myhomeapp.ui.theme.pages.TwoBedroom.ViewTwoBedroomScreen
 import com.example.myhomeapp.ui.theme.pages.about.AboutScreen
+import com.example.myhomeapp.ui.theme.pages.bedsitter.AddBedsitterScreen
+import com.example.myhomeapp.ui.theme.pages.bedsitter.ViewBedsitterScreen
 import com.example.myhomeapp.ui.theme.pages.home.HomeScreen
 import com.example.myhomeapp.ui.theme.pages.home.LoginScreen
 import com.example.myhomeapp.ui.theme.pages.signup.SignupScreen
@@ -20,8 +23,8 @@ import com.example.myhomeapp.ui.theme.pages.signup.SignupScreen
 
 @Composable
 fun AppNavHost (modifier: Modifier = Modifier,
-                       navController: NavHostController = rememberNavController(),
-                       startDestination:String = ROUTE_LOGIN) {
+                navController: NavHostController = rememberNavController(),
+                startDestination:String = ROUTE_LOGIN) {
     NavHost(navController = navController,
         modifier = modifier, startDestination = startDestination){
 
@@ -39,24 +42,38 @@ fun AppNavHost (modifier: Modifier = Modifier,
         composable(ROUTE_ABOUT){
             AboutScreen(navController)
         }
-        composable(ROUTE_HOUSES){
-            RoomsScreen(navController)
+        composable(ROUTE_BEDSITTER){
+            AddBedsitterScreen(navController)
         }
         composable(ROUTE_BEDSITTER){
-            BedsitterScreen(navController)
+            ViewBedsitterScreen(navController)
         }
         composable(ROUTE_ONEBEDROOM){
-            OneBedroomScreen(navController)
+            AddOneBedroomScreen(navController)
+        }
+        composable(ROUTE_ONEBEDROOM){
+            ViewOneBedroomScreen(navController)
         }
         composable(ROUTE_TWOBEDROOM){
-            TwoBedroomScreen(navController)
+            AddTwoBedroomScreen(navController)
+        }
+        composable(ROUTE_TWOBEDROOM){
+            ViewTwoBedroomScreen(navController)
         }
         composable(ROUTE_THREEBEDROOM){
-            ThreeBedroomScreen(navController)
+            AddThreeBedroomScreen(navController)
         }
-        composable(ROUTE_PENTHOUSE){
-            PenthouseScreen(navController)
+        composable(ROUTE_THREEBEDROOM){
+            ViewThreeBedroomScreen(navController)
         }
+
+        composable(ROUTE_THREEBEDROOM){
+            AddPenthouseScreen(navController)
+        }
+        composable(ROUTE_THREEBEDROOM){
+            ViewPenthouseScreen(navController)
+        }
+
 
     }
 }
