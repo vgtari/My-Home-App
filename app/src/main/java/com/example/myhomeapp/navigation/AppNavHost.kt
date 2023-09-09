@@ -1,4 +1,5 @@
 package com.example.myhomeapp.navigation
+import android.window.SplashScreen
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -19,12 +20,13 @@ import com.example.myhomeapp.ui.theme.pages.bedsitter.ViewBedsitterScreen
 import com.example.myhomeapp.ui.theme.pages.home.HomeScreen
 import com.example.myhomeapp.ui.theme.pages.home.LoginScreen
 import com.example.myhomeapp.ui.theme.pages.signup.SignupScreen
+import com.example.myhomeapp.ui.theme.pages.splash.SplashScreen
 
 
 @Composable
 fun AppNavHost (modifier: Modifier = Modifier,
                 navController: NavHostController = rememberNavController(),
-                startDestination:String = ROUTE_LOGIN) {
+                startDestination:String = ROUTE_SPLASH) {
     NavHost(navController = navController,
         modifier = modifier, startDestination = startDestination){
 
@@ -67,12 +69,16 @@ fun AppNavHost (modifier: Modifier = Modifier,
             ViewThreeBedroomScreen(navController)
         }
 
-        composable(ROUTE_THREEBEDROOM){
+        composable(ROUTE_PENTHOUSE){
             AddPenthouseScreen(navController)
         }
-        composable(ROUTE_THREEBEDROOM){
+        composable(ROUTE_PENTHOUSE){
             ViewPenthouseScreen(navController)
         }
+        composable(ROUTE_SPLASH){
+           SplashScreen(navController)
+        }
+
 
 
     }
