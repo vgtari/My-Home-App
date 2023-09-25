@@ -1,22 +1,18 @@
 package com.example.myhomeapp.navigation
-import android.window.SplashScreen
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.myhomeapp.ui.theme.pages.OneBedroom.AddOneBedroomScreen
+import com.example.myhomeapp.ui.theme.pages.Houses.AddHouseScreen
+import com.example.myhomeapp.ui.theme.pages.Houses.UpdateHouseScreen
 
-import com.example.myhomeapp.ui.theme.pages.OneBedroom.ViewOneBedroomScreen
-import com.example.myhomeapp.ui.theme.pages.Penthouse.AddPenthouseScreen
-import com.example.myhomeapp.ui.theme.pages.Penthouse.ViewPenthouseScreen
-import com.example.myhomeapp.ui.theme.pages.ThreeBedroom.AddThreeBedroomScreen import com.example.myhomeapp.ui.theme.pages.ThreeBedroom.ViewThreeBedroomScreen
-import com.example.myhomeapp.ui.theme.pages.TwoBedroom.AddTwoBedroomScreen
-import com.example.myhomeapp.ui.theme.pages.TwoBedroom.ViewTwoBedroomScreen
+
+import com.example.myhomeapp.ui.theme.pages.Houses.ViewHouseScreen
+import com.example.myhomeapp.ui.theme.pages.Houses.ViewUploadsScreen
+import com.example.myhomeapp.ui.theme.pages.Inventory.InventoryScreen
 import com.example.myhomeapp.ui.theme.pages.about.AboutScreen
-import com.example.myhomeapp.ui.theme.pages.bedsitter.AddBedsitterScreen
-import com.example.myhomeapp.ui.theme.pages.bedsitter.ViewBedsitterScreen
 import com.example.myhomeapp.ui.theme.pages.home.HomeScreen
 import com.example.myhomeapp.ui.theme.pages.home.LoginScreen
 import com.example.myhomeapp.ui.theme.pages.signup.SignupScreen
@@ -44,40 +40,26 @@ fun AppNavHost (modifier: Modifier = Modifier,
         composable(ROUTE_ABOUT){
             AboutScreen(navController)
         }
-        composable(ROUTE_BEDSITTER){
-            AddBedsitterScreen(navController)
+        composable(ROUTE_ADD_HOUSE){
+            AddHouseScreen(navController)
         }
-        composable(ROUTE_BEDSITTER){
-            ViewBedsitterScreen(navController)
+        composable(ROUTE_VIEW_HOUSE){
+            ViewHouseScreen(navController)
         }
-        composable(ROUTE_ONEBEDROOM){
-            AddOneBedroomScreen(navController)
-        }
-        composable(ROUTE_ONEBEDROOM){
-            ViewOneBedroomScreen(navController)
-        }
-        composable(ROUTE_TWOBEDROOM){
-            AddTwoBedroomScreen(navController)
-        }
-        composable(ROUTE_TWOBEDROOM){
-            ViewTwoBedroomScreen(navController)
-        }
-        composable(ROUTE_THREEBEDROOM){
-            AddThreeBedroomScreen(navController)
-        }
-        composable(ROUTE_THREEBEDROOM){
-            ViewThreeBedroomScreen(navController)
-        }
-
-        composable(ROUTE_PENTHOUSE){
-            AddPenthouseScreen(navController)
-        }
-        composable(ROUTE_PENTHOUSE){
-            ViewPenthouseScreen(navController)
+        composable("$ROUTE_UPDATE_HOUSE/{id}") { passedData ->
+            UpdateHouseScreen(navController, passedData.arguments?.getString("id")!!)
         }
         composable(ROUTE_SPLASH){
            SplashScreen(navController)
         }
+        composable(ROUTE_INVENTORY){
+           InventoryScreen(navController)
+        }
+
+        composable(ROUTE_VIEW_UPLOADS){
+            ViewUploadsScreen(navController)
+        }
+
 
 
 

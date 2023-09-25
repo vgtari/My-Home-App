@@ -5,16 +5,23 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -38,7 +45,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.myhomeapp.R
 import com.example.myhomeapp.data.AuthRepository
+import com.example.myhomeapp.navigation.ROUTE_ABOUT
+import com.example.myhomeapp.navigation.ROUTE_ADD_HOUSE
+import com.example.myhomeapp.navigation.ROUTE_INVENTORY
+
 import com.example.myhomeapp.navigation.ROUTE_SIGNUP
+import com.example.myhomeapp.navigation.ROUTE_UPDATE_HOUSE
+import com.example.myhomeapp.navigation.ROUTE_VIEW_HOUSE
 import com.example.myhomeapp.ui.theme.MyHomeAppTheme
 
 
@@ -77,7 +90,7 @@ Spacer(modifier = Modifier.height(90.dp))
         Text(text = "Login here",
             color = Color.Red,
             fontSize = 30.sp,
-            fontFamily = FontFamily.Monospace,
+            fontFamily = FontFamily.Cursive,
             textDecoration = TextDecoration.Underline,
             fontWeight = FontWeight.Bold)
 
@@ -100,22 +113,33 @@ Spacer(modifier = Modifier.height(90.dp))
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Button(onClick = {
-            // ------WRITE LOGIN LOGIC HERE------//
-            var authRepository = AuthRepository(navController,context)
-            authRepository.login(email.text.trim(),password.text.trim())
-        }) {
-            Text(text = "Login")
+       Button(onClick = { navController.navigate(ROUTE_INVENTORY)},
+           modifier = Modifier.fillMaxWidth(),
+           colors = ButtonDefaults.buttonColors(Color.Red)) {
+Text(text = "LOGIN",
+    Modifier.padding(vertical = 10.dp))
+       }
+
+        Spacer(modifier = Modifier.height(10.dp))
+Divider(color = Color.White,
+    thickness = 2.dp,
+    modifier = Modifier.padding(10.dp))
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(onClick = { navController.navigate(ROUTE_SIGNUP)},
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(Color.Red)) {
+            Text(text = "No Account? SIGNUP",
+                Modifier.padding(vertical = 10.dp))
         }
+
         Spacer(modifier = Modifier.height(20.dp))
 
-        Button(onClick = {
-            navController.navigate(ROUTE_SIGNUP)
-        }) {
-            Text(text = "No account? Signup" )
-        }
 
     }
+
+
 }
 @Preview
 @Composable

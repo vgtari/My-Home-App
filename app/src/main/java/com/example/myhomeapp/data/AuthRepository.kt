@@ -11,8 +11,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
 class AuthRepository (var navController: NavHostController, var context: Context) {
-    var mAuth: FirebaseAuth
-    var progress: ProgressDialog
+    val mAuth: FirebaseAuth
+    val progress: ProgressDialog
 
     init {
         mAuth = FirebaseAuth.getInstance()
@@ -53,7 +53,8 @@ class AuthRepository (var navController: NavHostController, var context: Context
         mAuth.signOut()
         navController.navigate(ROUTE_LOGIN)
     }
-    fun isloggedin():Boolean{
+
+    fun isLoggedIn(): Boolean {
         return mAuth.currentUser != null
     }
 }
